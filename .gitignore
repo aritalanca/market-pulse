@@ -95,3 +95,4 @@ build/
 # Zip files
 *.zip
 
+.env

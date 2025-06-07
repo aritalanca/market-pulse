@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q&A Test</title>
+</head>
+<body>
+    <h1>Q&A Test</h1>
+    <div>
+        <input type="text" id="question" placeholder="Ask a question..." />
+        <button id="askBtn">Ask</button>
+    </div>
+    <div id="response"></div>
+
+    <script>
+        document.getElementById('askBtn').addEventListener('click', async function() {
+            const question = document.getElementById('question').value;
+            const response = document.getElementById('response');
+            
+            if (!question.trim()) {
+                response.innerHTML = 'Please enter a question';
+                return;
+            }
+            
+            response.innerHTML = 'Loading...';
+            
+            try {
+                const result = await fetch('/api/qa', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        symbol: 'AAPL',
+                        question: question
+                    })
+                });
+                
+                const data = await result.json();
+                response.innerHTML = `<strong>Answer:</strong> ${data.answer}`;
+            } catch (error) {
+                response.innerHTML = `Error: ${error.message}`;
+            }
+        });
+        
+        document.getElementById('question').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('askBtn').click();
+            }
+        });
+    </script>
+</body>
+</html>
+

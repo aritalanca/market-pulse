@@ -1,0 +1,45 @@
+/* Volume Metrics Styling */
+.volume-metrics-container {
+    padding: 0.5rem 1rem;
+    background-color: var(--neutral-light);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.volume-metrics {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.volume-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.volume-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-light);
+}
+
+.volume-value {
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.rel-volume-high {
+    color: var(--warning-color);
+}
+
+.rel-volume-very-high {
+    color: var(--danger-color);
+}
+
+.rel-volume-normal {
+    color: var(--text-color);
+}
+
+.rel-volume-low {
+    color: var(--text-light);
+}

@@ -1,0 +1,26 @@
+/* Sentiment Indicator Styling */
+.sentiment-indicator {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5rem 1rem;
+    font-weight: 700;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    border-radius: 0 var(--radius) 0 var(--radius);
+    z-index: 5;
+}
+
+.sentiment-bullish {
+    background-color: rgba(0, 179, 126, 0.9);
+    color: white;
+}
+
+.sentiment-bearish {
+    background-color: rgba(235, 87, 87, 0.9);
+    color: white;
+}
+
+.stock-card {
+    position: relative;
+}

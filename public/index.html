@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Beacon | Real-time Market Analysis</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/volume_metrics.css">
+    <link rel="stylesheet" href="css/paywall.css">
+    <link rel="stylesheet" href="css/sentiment_indicator.css">
+    <link rel="stylesheet" href="css/realtime_updates.css">
+    <link rel="stylesheet" href="css/chat.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="img/logo.png" alt="Stock Beacon Logo" style="height: 80px;">
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#" class="nav-link">Dashboard</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <button class="btn btn-outline">Sign Up</button>
+                <button class="btn btn-primary">Log In</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Filters -->
+            <div class="filters-section">
+                <div class="filters-info">
+                    <div class="filter-description">
+                        <h3>Filtered Stocks</h3>
+                        <p>Showing only stocks between <strong>$2 - $30</strong> with volume above <strong>1 million</strong>, ordered by relevance</p>
+                    </div>
+                    <div class="filter-group">
+                        <label for="stocks-per-page">Stocks per Page</label>
+                        <select id="stocks-per-page" class="filter-select">
+                            <option value="3">3</option>
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Real-time Update Status (Subtle Version) -->
+            <div class="update-countdown-container">
+                <div class="update-status">
+                    <span class="update-label">Next update in:</span>
+                    <span id="update-countdown">2:00</span>
+                    <span class="update-unit">minutes</span>
+                </div>
+                <button id="force-update" class="btn-update">Update Now</button>
+            </div>
+            
+            <!-- Stocks Container -->
+            <div class="stocks-container">
+                <!-- Stock Card 1 - Free -->
+                <div class="stock-card">
+                    <div class="stock-header">
+                        <div class="stock-title">
+                            <h2>NVDA</h2>
+                        </div>
+                        <div class="sentiment-indicator sentiment-bullish">BULLISH</div>
+                        <div class="stock-price">
+                            <h3>$887.12</h3>
+                            <div class="price-change positive">+12.21 (+1.4%)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="volume-metrics">
+                        <div class="volume">
+                            <span class="label">Volume</span>
+                            <span class="value">44.3M</span>
+                        </div>
+                        <div class="rel-volume">
+                            <span class="label">Rel Volume</span>
+                            <span class="value">2.7</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stock-section">
+                        <div class="trending-reason">
+                            <h4>Why it's trending</h4>
+                            <p>NVIDIA announced revolutionary new AI chip with 3x performance gains over previous generation, driving significant pre-market interest from institutional investors.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stock-section">
+                        <div class="pros-cons-list">
+                            <div class="pros-section">
+                                <h4>PROS</h4>
+                                <ul class="pros-list">
+                                    <li data-source="press-release-1">Revolutionary AI chip technology with 3x performance gains</li>
+                                    <li data-source="analyst-report-2">Strong institutional buying across major funds</li>
+                                    <li data-source="earnings-call-3">Expanding market share in data center segment</li>
+                                </ul>
+                            </div>
+                            <div class="cons-section">
+                                <h4>CONS</h4>
+                                <ul class="cons-list">
+                                    <li data-source="sec-filing-1">Potential supply constraints due to manufacturing issues</li>
+                                    <li data-source="analyst-report-4">High valuation concerns with P/E ratio above sector average</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="qa-section">
+                        <div class="qa-header">
+                            <h4>Ask about this stock</h4>
+                        </div>
+                        <div class="suggested-questions">
+                            <span class="question-tag">What does this volume indicate?</span>
+                            <span class="question-tag">Is this better for day or swing trading?</span>
+                            <span class="question-tag">What are the key risks?</span>
+                        </div>
+                        <div class="qa-input">
+                            <input type="text" placeholder="Ask a question...">
+                            <button class="btn-ask">Ask</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stock Card 2 - Premium with Paywall -->
+                <div class="stock-card premium-card">
+                    <div class="stock-header">
+                        <div class="stock-title">
+                            <h2>AAPL</h2>
+                        </div>
+                        <div class="sentiment-indicator sentiment-bullish">BULLISH</div>
+                        <div class="stock-price">
+                            <h3>$168.56</h3>
+                            <div class="price-change positive">+4.82 (+2.9%)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="volume-metrics">
+                        <div class="volume">
+                            <span class="label">Volume</span>
+                            <span class="value">84.1M</span>
+                        </div>
+                        <div class="rel-volume">
+                            <span class="label">Rel Volume</span>
+                            <span class="value">1.8</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stock-section">
+                        <div class="trending-reason">
+                            <h4>Why it's trending</h4>
+                            <p>Apple announced new AI features for iOS 18 that exceeded analyst expectations, with potential to drive significant service revenue growth in coming quarters.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stock-section">
+                        <div class="pros-cons-list">
+                            <div class="pros-section">
+                                <h4>PROS</h4>
+                                <ul class="pros-list">
+                                    <li data-source="press-release-5">New product category launch with significant market potential</li>
+                                    <li data-source="analyst-report-6">Strong consumer demand signals from pre-order surveys</li>
+                                </ul>
+                            </div>
+                            <div class="cons-section">
+                                <h4>CONS</h4>
+                                <ul class="cons-list">
+                                    <li data-source="sec-filing-7">Supply chain constraints affecting initial production targets</li>
+                                    <li data-source="insider-trading-8">Recent insider selling from three senior executives</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="qa-section">
+                        <div class="qa-header">
+                            <h4>Ask about this stock</h4>
+                        </div>
+                        <div class="suggested-questions">
+                            <span class="question-tag">What does this volume indicate?</span>
+                            <span class="question-tag">Is this better for day or swing trading?</span>
+                            <span class="question-tag">How significant is the insider selling?</span>
+                        </div>
+                        <div class="qa-input">
+                            <input type="text" placeholder="Ask a question...">
+                            <button class="btn-ask">Ask</button>
+                        </div>
+                    </div>
+                    
+                    <div class="paywall">
+                        <div class="paywall-content">
+                            <h3>Unlock Premium Analysis</h3>
+                            <p>Subscribe to access all stocks and premium features</p>
+                            <button class="btn-subscribe">Subscribe for $10/month</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stock Card 3 - Premium with Paywall -->
+                <div class="stock-card premium-card">
+                    <div class="stock-header">
+                        <div class="stock-title">
+                            <h2>TSLA</h2>
+                        </div>
+                        <div class="sentiment-indicator sentiment-bearish">BEARISH</div>
+                        <div class="stock-price">
+                            <h3>$172.56</h3>
+                            <div class="price-change negative">-8.71 (-4.8%)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="volume-metrics">
+                        <div class="volume">
+                            <span class="label">Volume</span>
+                            <span class="value">92.6M</span>
+                        </div>
+                        <div class="rel-volume">
+                            <span class="label">Rel Volume</span>
+                            <span class="value">2.1</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stock-section">
+                        <div class="trending-reason">
+                            <h4>Why it's trending</h4>
+                            <p>Tesla reported lower-than-expected delivery numbers for the quarter, raising concerns about demand softening in key markets amid increasing competition.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stock-section">
+                        <div class="pros-cons-list">
+                            <div class="pros-section">
+                                <h4>PROS</h4>
+                                <ul class="pros-list">
+                                    <li data-source="press-release-9">New energy storage contracts with major utility companies</li>
+                                    <li data-source="analyst-report-10">Strong brand loyalty despite increased competition</li>
+                                </ul>
+                            </div>
+                            <div class="cons-section">
+                                <h4>CONS</h4>
+                                <ul class="cons-list">
+                                    <li data-source="sec-filing-11">Production delays announced for new model rollout</li>
+                                    <li data-source="earnings-call-12">Margin pressure increasing due to battery cost inflation</li>
+                                    <li data-source="analyst-report-13">New competitor gaining market share in luxury segment</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="qa-section">
+                        <div class="qa-header">
+                            <h4>Ask about this stock</h4>
+                        </div>
+                        <div class="suggested-questions">
+                            <span class="question-tag">What does this volume indicate?</span>
+                            <span class="question-tag">Is this better for day or swing trading?</span>
+                            <span class="question-tag">How concerning are the production delays?</span>
+                        </div>
+                        <div class="qa-input">
+                            <input type="text" placeholder="Ask a question...">
+                            <button class="btn-ask">Ask</button>
+                        </div>
+                    </div>
+                    
+                    <div class="paywall">
+                        <div class="paywall-content">
+                            <h3>Unlock Premium Analysis</h3>
+                            <p>Subscribe to access all stocks and premium features</p>
+                            <button class="btn-subscribe">Subscribe for $10/month</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Payment Modal -->
+    <div id="payment-modal" class="modal" style="display: none;">
+        <div class="modal-content payment-modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Subscribe to Stock Beacon Premium</h2>
+            <div class="payment-tabs">
+                <div class="payment-tab active" data-tab="card">Credit Card</div>
+                <div class="payment-tab" data-tab="paypal">PayPal</div>
+            </div>
+            <div class="payment-forms">
+                <form id="payment-form" class="payment-form">
+                    <div class="form-group">
+                        <label for="card-element">Credit or debit card</label>
+                        <div id="card-element">
+                            <!-- Stripe Card Element will be inserted here -->
+                        </div>
+                        <div id="card-errors" role="alert"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Name on card</label>
+                        <input type="text" id="name" placeholder="Jane Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input type="email" id="email" placeholder="jane@example.com" required>
+                    </div>
+                    <button type="submit" id="submit-payment" class="btn-primary">Subscribe for $10/month</button>
+                </form>
+                <div id="paypal-form" class="payment-form" style="display: none;">
+                    <p>Click the button below to pay with PayPal:</p>
+                    <div id="paypal-button-container"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ChatGPT Chat Window -->
+    <div id="chatgpt-window" class="chatgpt-window">
+        <div class="chat-header">
+            <div class="chat-title">
+                <span class="chat-icon">🤖</span>
+                <h3>ChatGPT Assistant</h3>
+            </div>
+            <div class="chat-controls">
+                <button id="minimize-chat" class="chat-btn minimize-btn">−</button>
+                <button id="close-chat" class="chat-btn close-btn">×</button>
+            </div>
+        </div>
+        <div class="chat-body">
+            <div id="chat-messages" class="chat-messages">
+                <div class="message assistant-message">
+                    <div class="message-content">
+                        <strong>ChatGPT:</strong> Hello! I'm here to help you with any questions about stocks, trading, market analysis, or anything else. What would you like to know?
+                    </div>
+                    <div class="message-time">Just now</div>
+                </div>
+            </div>
+            <div class="chat-input-container">
+                <input type="text" id="chat-input" placeholder="Ask ChatGPT anything..." />
+                <button id="send-message" class="send-btn">
+                    <span>Send</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Toggle Button -->
+    <button id="chat-toggle" class="chat-toggle">
+        <span class="chat-icon">💬</span>
+        <span class="chat-text">Chat with AI</span>
+    </button>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#">Terms</a>
+                    <a href="#">Privacy</a>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+            
+            <div class="footer-tabs">
+                <a href="#" class="footer-tab">Dashboard</a>
+                <a href="#" class="footer-tab">Pricing</a>
+                <a href="#" class="footer-tab">About</a>
+                <a href="#" class="footer-tab">FAQ</a>
+                <a href="#" class="footer-tab">Support</a>
+            </div>
+            
+            <div class="footer-copyright">
+                &copy; 2025 Stock Beacon. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+    <script src="js/chat.js"></script>
+    <script src="js/debug-chat.js"></script>
+    <script src="js/volume_metrics.js"></script>
+    <script src="js/qa_interface.js"></script>
+    <script src="js/paywall.js"></script>
+    <script src="js/onboarding_monetization.js"></script>
+    <script src="js/realtime_updates.js"></script>
+    <script src="js/stripe_integration.js"></script>
+    <script src="js/paypal_integration.js"></script>
+    
+    <script>
+        // Initialize all modules when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize modules
+            if (window.QAInterface) window.QAInterface.initialize();
+            if (window.Paywall) window.Paywall.initialize();
+            if (window.OnboardingMonetization) window.OnboardingMonetization.initialize();
+            if (window.RealtimeUpdates) window.RealtimeUpdates.initialize();
+            if (window.StripeIntegration) window.StripeIntegration.initialize();
+            if (window.PayPalIntegration) window.PayPalIntegration.initialize();
+        });
+    </script>
+    <!-- Scripts -->
+    <script src="js/app.js"></script></body>
+</html>

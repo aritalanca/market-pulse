@@ -1,0 +1,66 @@
+/* Paywall CSS */
+.premium-card {
+  position: relative;
+}
+
+.premium-card .stock-header,
+.premium-card .volume-metrics,
+.premium-card .stock-section,
+.premium-card .qa-section {
+  filter: blur(4px);
+  user-select: none;
+  pointer-events: none;
+}
+
+.paywall {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(23, 63, 63, 0.7);
+  backdrop-filter: blur(0px); /* No additional blur on the overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.paywall-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 80%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  filter: blur(0px); /* Keep the paywall content clear */
+  user-select: auto;
+  pointer-events: auto;
+}
+
+.paywall-content h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: #173F3F;
+}
+
+.paywall-content p {
+  margin-bottom: 1.5rem;
+  color: #6C7A7A;
+}
+
+.btn-subscribe {
+  background-color: #3CAEA3;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-subscribe:hover {
+  background-color: #35998F;
+}

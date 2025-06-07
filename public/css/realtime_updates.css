@@ -1,0 +1,88 @@
+/**
+ * Real-time Updates CSS
+ * Styles for the real-time update functionality
+ */
+
+.update-countdown-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    margin: 8px 0;
+}
+
+.update-status {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    color: #6C7A7A;
+}
+
+.update-label {
+    margin-right: 6px;
+}
+
+#update-countdown {
+    font-weight: 600;
+    font-size: 14px;
+    color: #2d3748;
+    margin: 0 4px;
+}
+
+.update-unit {
+    color: #718096;
+}
+
+.btn-update {
+    background-color: #38b2ac;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-update:hover {
+    background-color: #319795;
+}
+
+.btn-update:disabled {
+    background-color: #cbd5e0;
+    cursor: not-allowed;
+}
+
+.update-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #38b2ac;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: translateY(-100px);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 1000;
+    font-size: 13px;
+}
+
+.update-notification.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .update-countdown-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .btn-update {
+        margin-top: 8px;
+    }
+}

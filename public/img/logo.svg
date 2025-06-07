@@ -1,0 +1,36 @@
+<svg width="200" height="50" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Shape -->
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3CAEA3" />
+      <stop offset="100%" stop-color="#4A8B9F" />
+    </linearGradient>
+    <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="1"/>
+      <feOffset dx="0" dy="1" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3"/>
+      </feComponentTransfer>
+      <feMerge> 
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/> 
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Main Logo Shape - More refined circle with subtle shadow -->
+  <circle cx="50" cy="25" r="18" fill="url(#logoGradient)" filter="url(#dropShadow)" />
+  
+  <!-- Stock Chart Line - More professional looking -->
+  <path d="M38 30 L 44 22 L 50 28 L 56 18 L 62 25" 
+        stroke="#FFFFFF" stroke-width="2.5" fill="none" 
+        stroke-linecap="round" stroke-linejoin="round" />
+  
+  <!-- Letter M - More distinctive -->
+  <path d="M42 17 L 42 33 M 42 17 L 50 25 L 58 17 M 58 17 L 58 33" 
+        stroke="#FFFFFF" stroke-width="2.5" fill="none" 
+        stroke-linecap="round" stroke-linejoin="round" />
+  
+  <!-- Text - Smaller, more professional font -->
+  <text x="75" y="30" font-family="Inter, sans-serif" font-weight="600" font-size="16" fill="#173F3F">Market Pulse</text>
+</svg>
